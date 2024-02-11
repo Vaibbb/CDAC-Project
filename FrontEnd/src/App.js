@@ -6,6 +6,9 @@ import Form from './components/Form/Form'
 import Register from './components/Register/Register'
 import Sprint from './components/Sprint/Sprint'
 import Welcome from './components/Sprint/welcome/Welcome'
+import SprintView from './components/Sprint/Sprint_View/SprintView';
+import EntryDetails from './components/Sprint/Sprint_View/Entry_Details/EntryDetails';
+
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           </Route>
           <Route path='/sprint' element={<Sprint/>}>
               <Route path='/sprint' element={<Welcome/>}></Route>
+              <Route path='/sprint/sprintview' element={<SprintView/>}>
+                <Route path='/sprint/sprintview/sprintentry' element={<EntryDetails/>}></Route>
+              </Route>
           </Route>
         </Routes>
     </BrowserRouter>

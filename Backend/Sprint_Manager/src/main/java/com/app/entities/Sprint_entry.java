@@ -3,6 +3,7 @@ package com.app.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -18,15 +19,15 @@ public class Sprint_entry extends Base_Entity {
 	private LocalDate start_date;
 	@Column
 	private LocalDate finish_date;
-	@ManyToMany(mappedBy = "employees")
-	private Set<Tasks> Entries=new HashSet<>();
+	@ManyToMany(mappedBy = "Entries")
+	private Set<Tasks> Tasks_list=new HashSet<>();
 	@ManyToOne
-	@JoinColumn(name="Sprint")
-	private Sprint Sprint;
+	@JoinColumn(name="Sprint_entries_list")
+	private Sprint sprint_id;
 	
-	@OneToMany(mappedBy = "Entry_id",cascade = CascadeType.ALL,
+	@OneToMany(mappedBy = "Entry",cascade = CascadeType.ALL,
 			orphanRemoval = true ,fetch=FetchType.EAGER )
-	private ArrayList<Employee> Employee_list = new ArrayList<>();
+	private List<Employee> Employee_list = new ArrayList<>();
 
 	public String getDescription() {
 		return Description;
@@ -52,38 +53,25 @@ public class Sprint_entry extends Base_Entity {
 		this.finish_date = finish_date;
 	}
 
-	public Set<Tasks> getEntries() {
-		return Entries;
-	}
 
-	public void setEntries(Set<Tasks> entries) {
-		Entries = entries;
-	}
 
-	public Sprint getSprint() {
-		return Sprint;
-	}
 
-	public void setSprint(Sprint sprint) {
-		Sprint = sprint;
-	}
-
-	public ArrayList<Employee> getEmployee_list() {
+	public List<Employee> getEmployee_list() {
 		return Employee_list;
 	}
 
-	public void setEmployee_list(ArrayList<Employee> employee_list) {
+	public void setEmployee_list(List<Employee> employee_list) {
 		Employee_list = employee_list;
 	}
 
 	public Sprint_entry(String description, LocalDate start_date, LocalDate finish_date, Set<Tasks> entries,
-			com.app.entities.Sprint sprint, ArrayList<Employee> employee_list) {
+			Sprint sprint, List<Employee> employee_list) {
 		super();
 		Description = description;
 		this.start_date = start_date;
 		this.finish_date = finish_date;
-		Entries = entries;
-		Sprint = sprint;
+		Tasks_list = entries;
+		sprint_id = sprint;
 		Employee_list = employee_list;
 	}
 

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Sprint_Entry")
-public class Employee {
+public class Employee extends Base_Entity {
 	@Column
 	private String firstName;
 	@Column

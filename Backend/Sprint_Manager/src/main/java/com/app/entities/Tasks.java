@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Tasks")
-public class Tasks {
+public class Tasks extends Base_Entity {
 	@Column
 	private double duration;
 	@Column(name ="Name")

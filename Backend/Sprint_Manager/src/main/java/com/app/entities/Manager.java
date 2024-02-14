@@ -2,10 +2,10 @@ package com.app.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
-import antlr.collections.List;
 
 @Entity
 @Table(name = "Manager")
@@ -31,7 +31,7 @@ public class Manager extends Base_Entity {
 	
 	@OneToMany(mappedBy = "manager_id",cascade = CascadeType.ALL,
 			orphanRemoval = true ,fetch=FetchType.EAGER )
-	private ArrayList<Sprint> sprint_list = new ArrayList<>();
+	private List<Sprint> sprint_list = new ArrayList<>();
 
 	public String getFirstName() {
 		return firstName;
@@ -89,7 +89,7 @@ public class Manager extends Base_Entity {
 		this.salary = salary;
 	}
 
-	public ArrayList<Sprint> getSprint_list() {
+	public List<Sprint> getSprint_list() {
 		return sprint_list;
 	}
 

@@ -81,6 +81,9 @@ public class Employee extends Base_Entity {
 		this.salary = salary;
 		Entry = entry;
 	}
+	public Employee() {
+		super();
+	}
 	
 	
 }

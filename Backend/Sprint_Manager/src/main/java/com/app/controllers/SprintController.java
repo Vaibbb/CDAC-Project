@@ -18,11 +18,11 @@ public class SprintController {
 	
 	@Autowired
 	private Sprint_service_imp service;
-	
-	@GetMapping
-	public List<Sprint> fetchAllSprints() {
-		System.out.println("in fetch all");
-		return service.getAllSprints();
+		
+	@GetMapping("/man/{manid}")
+	public List<Sprint> fetchAllSprints(int manid) {
+		System.out.println("in fetch all" + manid);
+		return service.getAllSprints(manid);
 	}
 	
 	@PostMapping

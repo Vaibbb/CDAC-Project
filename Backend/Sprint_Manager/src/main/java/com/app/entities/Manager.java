@@ -25,7 +25,7 @@ public class Manager extends Base_Entity {
 	private LocalDate joinDate;
 	@Enumerated(EnumType.STRING) 
 	@Column(length = 30,name="Position")
-	private Position Position;
+	private Position Position; 
 	@Column
 	private double salary;//auto adds NOT NULL constraint
 	

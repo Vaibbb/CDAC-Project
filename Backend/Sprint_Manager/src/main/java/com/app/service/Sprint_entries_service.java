@@ -8,10 +8,10 @@ public interface Sprint_entries_service {
 	
 	public List<Sprint_entry> getAllSprintentry();
 
-	public Sprint_entry addNewEmp(Sprint_entry sp);
+	public Sprint_entry addNewEntry(Sprint_entry sp);
 
-	public Sprint_entry updateEmpDetails(Sprint_entry sp);
+	public Sprint_entry updateSprintentryDetails(Sprint_entry sp);
 
-	public String deleteEmpDetails(Long sprintentryId) ;
+	public String deleteEntryDetails(Long sprintentryId) ;
 
 }

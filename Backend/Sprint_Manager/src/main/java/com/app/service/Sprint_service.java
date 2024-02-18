@@ -6,7 +6,7 @@ import com.app.entities.Sprint;
 
 public interface Sprint_service {
 
-	public List<Sprint> getAllSprints();
+	public List<Sprint> getAllSprints(int id);
 	public Sprint addNewEmp(Sprint sp);
 	public Sprint updateEmpDetails(Sprint sp);
 	public String deleteEmpDetails(Long sprintId);

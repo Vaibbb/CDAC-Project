@@ -2,21 +2,27 @@ package com.app.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.dao.ManagerDao;
 import com.app.dao.ServiceDao;
 import com.app.entities.Sprint;
 
+
+@Service
+@Transactional
 public class Sprint_service_imp implements Sprint_service{
 	
 	@Autowired
 	private ServiceDao serdao;
 
 	@Override
-	public List<Sprint> getAllSprints() {
+	public List<Sprint> getAllSprints(int id) {
 		// TODO Auto-generated method stub
-		return serdao.findAll();
+		return serdao.findbymanager_id(id);
 	}
 
 	@Override

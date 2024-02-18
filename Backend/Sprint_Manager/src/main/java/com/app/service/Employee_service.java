@@ -9,9 +9,9 @@ public interface Employee_service {
 	
 	public List<Employee> getAllEmployee() ;
 
-	public Employee addNewEmp(Sprint sp) ;
+	public Employee addNewEmp(Employee sp) ;
 
-	public Employee updateEmpDetails(Sprint sp) ;
+	public Employee updateEmpDetails(Employee sp) ;
 	
 	public String deleteEmpDetails(Long sprintId) ;
 

@@ -16,7 +16,7 @@ class ManagerService{
 
 
     insertManager(manager){
-        console.log("in service add")
+        console.log("in service add" + manager)
        return axios.post(baseUrl +'/manager', manager, {
         headers: {
             'Content-Type': 'application/json'

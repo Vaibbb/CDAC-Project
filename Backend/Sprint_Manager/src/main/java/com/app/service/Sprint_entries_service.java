@@ -12,6 +12,6 @@ public interface Sprint_entries_service {
 
 	public Sprint_entry updateSprintentryDetails(Sprint_entry sp);
 
-	public String deleteEntryDetails(Long sprintentryId) ;
+	public String deleteEntryDetails(Integer sprintentryId) ;
 
 }

@@ -18,6 +18,7 @@ const Form = ()=>{
 
     const HandleRegister = ()=>{
         let man = new Manager(position,email,name,'2024-02-14','',password,salary);
+        console.log(man);
         let manadded = Service.insertManager(man).then((result)=>{
             console.log(result.data);
             if(result.data!=undefined)

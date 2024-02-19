@@ -13,6 +13,6 @@ public interface Employee_service {
 
 	public Employee updateEmpDetails(Employee sp) ;
 	
-	public String deleteEmpDetails(Long sprintId) ;
+	public String deleteEmpDetails(Integer sprintId) ;
 
 }

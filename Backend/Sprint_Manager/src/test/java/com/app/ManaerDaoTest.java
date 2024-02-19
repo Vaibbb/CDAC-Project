@@ -21,7 +21,6 @@ public class ManaerDaoTest {
     public void testFindByEmail() {
         // Create a manager entity
         Manager manager = new Manager();
-        manager.setEmail("john.doe@example.com");
         // Set other properties as needed
 
         // Save the manager

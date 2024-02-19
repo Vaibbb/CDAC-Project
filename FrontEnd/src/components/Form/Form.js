@@ -17,10 +17,12 @@ const Form = ()=>{
     const Handlelogin = ()=>{
         if(email !== '' && password !== '')
         console.log(email,password);
-        var man=ManagerService.getByName(email,password);
-        console.log(man);
-        if(man!=undefined)
-        navigate('/sprint');
+        var man=ManagerService.getByName(email,password).then(response =>{
+            console.log(response.data);
+           // if(response.data.email==email)
+            navigate('/sprint');
+        });
+
     }
 
     return(
@@ -31,9 +33,6 @@ const Form = ()=>{
                     <form>
                     <input type="text" placeholder="Enter username" onChange={e=>setemail(e.target.value)}></input>
                         <input type="password" placeholder="Password" onChange={e=>setpassword(e.target.value)}></input>
-                            <p class="recover">
-                                <a href="#">Forgot Password</a>
-                            </p>
                     </form>
                     
                     

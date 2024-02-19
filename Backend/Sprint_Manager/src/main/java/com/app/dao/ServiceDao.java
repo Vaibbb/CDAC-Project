@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import com.app.entities.Manager;
 import com.app.entities.Sprint;
 
-public interface ServiceDao extends JpaRepository<Sprint,Long> {
+public interface ServiceDao extends JpaRepository<Sprint,Integer> {
 
 	@Query(value="select * from SPRINT where manager_id =:id",nativeQuery=true)
-	List<Sprint> findbymanager_id(int id);
+	List<Sprint> findbymanager_id(Integer id);
 
 }

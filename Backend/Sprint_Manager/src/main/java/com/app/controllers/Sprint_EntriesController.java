@@ -51,7 +51,7 @@ public class Sprint_EntriesController {
 	}
 	
 	@DeleteMapping("/entry/{sprintentryId}") // URI variable /template var.
-	public String deleteEntryDetails(@PathVariable Long sprintentryId) {
+	public String deleteEntryDetails(@PathVariable Integer sprintentryId) {
 		System.out.println("in del emp " + sprintentryId);
 		return service_entry.deleteEntryDetails(sprintentryId);
 	}
@@ -75,7 +75,7 @@ public class Sprint_EntriesController {
 	}
 	
 	@DeleteMapping("/Employee/{employeeId}") // URI variable /template var.
-	public String deleteEmpDetails(@PathVariable Long sprintId) {
+	public String deleteEmpDetails(@PathVariable Integer sprintId) {
 		System.out.println("in del emp " + sprintId);
 		return employee_service.deleteEmpDetails(sprintId);
 	}

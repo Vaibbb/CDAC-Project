@@ -40,7 +40,7 @@ public class Employee_service_imp implements Employee_service {
 	}
 
 	@Override
-	public String deleteEmpDetails(Long sprintId) {
+	public String deleteEmpDetails(Integer sprintId) {
 		// TODO Auto-generated method stub
 		String mesg = "Sprint deletion failed !!!! invalid Sprint id";
 		if (serdao.existsById(sprintId)) {

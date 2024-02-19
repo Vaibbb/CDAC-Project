@@ -39,13 +39,10 @@ public class Sprint_entries_service_imp implements Sprint_entries_service {
 	}
 
 	@Override
-	public String deleteEntryDetails(Long sprintentryId) {
+	public String deleteEntryDetails(Integer sprintentryId) {
 		// TODO Auto-generated method stub
 		String mesg = "Sprint deletion failed !!!! invalid Sprint id";
-		if (serdao.existsById(sprintentryId)) {
 			serdao.deleteById(sprintentryId);
-			mesg = "Sprint details deleted ....";
-		}
 		return mesg;	}
 
 

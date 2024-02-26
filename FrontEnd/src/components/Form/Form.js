@@ -19,7 +19,7 @@ const Form = ()=>{
         console.log(email,password);
         var man=ManagerService.getByName(email,password).then(response =>{
             console.log(response.data);
-            if(response.data.email==email)
+           // if(response.data.email==email)
             navigate('/sprint');
         });
 

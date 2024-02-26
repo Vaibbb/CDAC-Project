@@ -34,6 +34,25 @@ const Welcome = ()=>{
     setsparray(sprintarray);
   },[])
 
+  /* const changearr = ()=>{
+    setchng(change+1)
+    console.log(change)
+  }
+    var id=1;
+    sprintservice.getAllsprints(id).then(Response => {
+      console.log(Response.data);
+      setsparray(Response.data);
+    })
+  },[]); */
+
+  useEffect(()=>{
+    var id=1;
+    sprintservice.getAllsprints(id).then(Response => {
+      console.log(Response.data);
+      setsparray(Response.data);
+    })
+  },[change]);
+
   const changearr = ()=>{
     setchng(change+1)
     console.log(change)
@@ -92,7 +111,7 @@ const Welcome = ()=>{
                       <div className='container-fluid' id='sprintcontainer'>
                         <div className='row' style={{ height: '100%' }}> 
                         {sparray.map((sprint) => (
-                          <div className='col-3' id='spintcolumn' >
+                          <div className='col-3' id='spintcolumn' key={sprint.id}>
                               <div >
                               <p>{sprint.name}</p>
                               {/* Other product details */}
@@ -106,8 +125,8 @@ const Welcome = ()=>{
                                 <li className='inner'>No of Employees :{sprint.no_of_employees}</li>
                                 <br></br>
                                 <div><button onClick={HandleView}>View</button></div>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <div><button /* onClick={updatesprint(sprint)} */>Update</button></div>
-                                <div><button /* onClick={deletesprint(sprint.id)} */>Delete</button></div>
+                                <div><button onClick={updatesprint(sprint)}>Update</button></div>
+                                <div><button onClick={deletesprint(sprint.id)}>Delete</button></div>
 
                               </ul>
                               </div>

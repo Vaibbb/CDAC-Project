@@ -2,13 +2,19 @@ package com.app.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.dao.Employee_dao;
 import com.app.dao.Sprint_entries_dao;
 import com.app.entities.Sprint;
 import com.app.entities.Sprint_entry;
 
+
+@Service
+@Transactional
 public class Sprint_entries_service_imp implements Sprint_entries_service {
 	
 	@Autowired
@@ -21,25 +27,22 @@ public class Sprint_entries_service_imp implements Sprint_entries_service {
 	}
 
 	@Override
-	public Sprint_entry addNewEmp(Sprint_entry sp) {
+	public Sprint_entry addNewEntry(Sprint_entry sp) {
 		// TODO Auto-generated method stub
 		return serdao.save(sp);
 	}
 
 	@Override
-	public Sprint_entry updateEmpDetails(Sprint_entry sp) {
+	public Sprint_entry updateSprintentryDetails(Sprint_entry sp) {
 		// TODO Auto-generated method stub
 		return serdao.save(sp);
 	}
 
 	@Override
-	public String deleteEmpDetails(Long sprintentryId) {
+	public String deleteEntryDetails(Integer sprintentryId) {
 		// TODO Auto-generated method stub
 		String mesg = "Sprint deletion failed !!!! invalid Sprint id";
-		if (serdao.existsById(sprintId)) {
-			serdao.deleteById(sprintId);
-			mesg = "Sprint details deleted ....";
-		}
+			serdao.deleteById(sprintentryId);
 		return mesg;	}
 
 

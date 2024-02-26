@@ -8,10 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-public interface ManagerDao extends JpaRepository<Manager,Long> {
+public interface ManagerDao extends JpaRepository<Manager,Integer> {
 	
-	@Query(value = "SELECT * FROM Manager m WHERE m.email = :email", nativeQuery = true)
-	Optional<Manager> findByEmail(@Param("email") String email);
+	Optional<Manager> findByEmail(String email);
 
 
 }

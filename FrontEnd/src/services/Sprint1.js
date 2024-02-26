@@ -1,11 +1,10 @@
 export class Sprint1{
-    constructor(name,domain,priority,deadline,no_of_employees,no_of_task){
-        this.name=name;
+    constructor(domain,deadline,priority,no_of_employees,manager_id){
         this.domain=domain;
-        this.priority=priority;
-        this.deadline=deadline;
+        this.priority=deadline;
+        this.deadline=priority;
         this.password = no_of_employees;
-        this.no_of_task = no_of_task;
+        this.no_of_task = manager_id;
     }
 }
 

@@ -1,8 +1,10 @@
 package com.app.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +20,16 @@ public class SprintController {
 	
 	@Autowired
 	private Sprint_service_imp service;
-	
-	@GetMapping
-	public List<Sprint> fetchAllSprints() {
-		System.out.println("in fetch all");
-		return service.getAllSprints();
+		
+	@GetMapping("/man/{manid}")
+	public List<Sprint> fetchAllSprints(@PathVariable Integer manid)  {
+		System.out.println("in fetch all" + manid);
+		List<Sprint> sp = service.getAllSprints(manid);
+		System.out.println(sp);
+		return sp;
 	}
 	
+
 	@PostMapping
 	public Sprint addSprintDetails(@RequestBody Sprint sp) {
 		System.out.println("in add emp " + sp);// id : null , rest all fields : present
@@ -38,7 +43,7 @@ public class SprintController {
 	}
 	
 	@DeleteMapping("/{sprintId}") // URI variable /template var.
-	public String deleteSprintDetails(@PathVariable Long sprintId) {
+	public String deleteSprintDetails(@PathVariable Integer sprintId) {
 		System.out.println("in del emp " + sprintId);
 		return service.deleteEmpDetails(sprintId);
 	}

@@ -19,7 +19,9 @@ public class ManagerController {
 	@GetMapping("/email/{email}")
 	public Optional<Manager> getManByDept(@PathVariable String email) {
 		System.out.println("in get man by email " + email);
-		return service.findByEmail(email);
+		Optional<Manager> man =service.findByEmail(email);
+		System.out.println(man);
+		return man;
 	}
 
 	@PostMapping

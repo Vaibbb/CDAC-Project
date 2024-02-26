@@ -9,16 +9,20 @@ import { useNavigate } from 'react-router-dom';
 
 const Form = ()=>{
 
-    const [name,setname] = useState('');
+    const [email,setemail] = useState('');
     const [password,setpassword] = useState('');   
     const navigate = useNavigate();  
  
 
     const Handlelogin = ()=>{
-        if(name !== '' && password !== '')
-        var man=ManagerService.getByName(name,password);
-        if(man!=undefined)
-        navigate('/sprint');
+        if(email !== '' && password !== '')
+        console.log(email,password);
+        var man=ManagerService.getByName(email,password).then(response =>{
+            console.log(response.data);
+            if(response.data.email==email)
+            navigate('/sprint');
+        });
+
     }
 
     return(
@@ -27,11 +31,8 @@ const Form = ()=>{
                 <h1>Hello Again!</h1>
                 <p>Welcome back you've been missed</p>
                     <form>
-                    <input type="text" placeholder="Enter username" onChange={e=>setname(e.target.value)}></input>
+                    <input type="text" placeholder="Enter username" onChange={e=>setemail(e.target.value)}></input>
                         <input type="password" placeholder="Password" onChange={e=>setpassword(e.target.value)}></input>
-                            <p class="recover">
-                                <a href="#">Recover Password</a>
-                            </p>
                     </form>
                     
                     

@@ -25,7 +25,10 @@ public class Manager_service_imp implements Manager_service {
 	@Override
 	public Optional<Manager> findByEmail(String email) {
 		// TODO Auto-generated method stub
-		return mandao.findByEmail(email);
+		Optional<Manager> man= mandao.findByEmail(email);
+		System.out.println(man);
+		return man;
+	
 	}
 
 }

@@ -24,8 +24,10 @@ public class SprintController {
 	@GetMapping("/man/{manid}")
 	public ResponseEntity<?>  fetchAllSprints(@PathVariable Integer manid) throws IOException {
 		System.out.println("in fetch all" + manid);
+		List<Sprint> sp  = service.getAllSprints(manid);
+		System.out.println(sp);
 		
-		return ResponseEntity.ok(service.getAllSprints(manid));
+		return ResponseEntity.ok(sp);
 	}
 	
 

@@ -9,8 +9,9 @@ class ManagerService{
         new Manager('Laksh','Satara',600000,'lead','3456')];
     }
     getByName(email,password){
+        console.log(email + "  " + baseUrl + 'manager' +email) ;
         if(email!=undefined && password!=undefined){
-       return axios.get(baseUrl+"/manager"+"/email/" + email);
+       return axios.get(baseUrl+'/manager/'+ email);
         }
     }
 

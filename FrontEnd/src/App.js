@@ -9,8 +9,7 @@ import Welcome from './components/Sprint/welcome/Welcome'
 import SprintView from './components/Sprint/Sprint_View/SprintView';
 import EntryDetails from './components/Sprint/Sprint_View/Entry_Details/EntryDetails';
 import Add from './components/Sprint/welcome/Add_a_sprint/Add'
-
-
+import Update from './components/Sprint/welcome/Update/Update'
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +22,7 @@ function App() {
           <Route path='/sprint' element={<Sprint/>}>
               <Route path='/sprint' element={<Welcome/>}></Route>
               <Route path='/sprint/addform' element={<Add/>}></Route>
+              <Route path='/sprint/updateform' element={<Update/>}></Route>
               <Route path='/sprint/sprintview' element={<SprintView/>}>
                 <Route path='/sprint/sprintview/sprintentry' element={<EntryDetails/>}></Route>
               </Route>

@@ -1,4 +1,3 @@
-import '../Add_a_sprint/Add.css'
 import React,{useState,useEffect} from 'react'
 import Sprint from '../../../../services/Sprint1';
 import Sprintservice from '../../../../services/Sprintservice'
@@ -6,10 +5,12 @@ import Manager from '../../../../services/Manager';
 import {useDispatch} from 'react-redux';
 import managerlogin from '../../../../redux/action/loginaction'
 import { useSelector } from 'react-redux'
+import '../Update/update.css'
 import { useNavigate } from 'react-router-dom';
 
-const Add = (props)=>{
-    let managerid=useSelector((state)=>state.managerid)
+const Update = (props)=>{
+    let sprint3=useSelector((state)=>state.sprint1);
+    let managerid=useSelector((state)=>state.managerid);
     const [show,setshow] = useState('');
     const[domain,setdom]= useState('');
     const[deadline,setdead]= useState('');
@@ -19,15 +20,22 @@ const Add = (props)=>{
     const dispatch=useDispatch();
     const navigate = useNavigate();  
 
+    useEffect(()=>{
+        console.log("it works with sprint and manger   " + JSON.stringify(sprint3) +managerid);
+        setdom(sprint3[0].domain);
+        setdead(sprint3[0].last_date_to_submit);
+        setprio(sprint3[0].priority);
+        setemp(sprint3[0].number_emp);
+      },[])
 
     const Handlesprint = ()=>{
-        console.log("manager id is " + managerid);
+        console.log("sprint is " + sprint3);
         let sprint = new Sprint(domain,deadline,priority,no_of_employees,managerid);
         console.log(sprint);
-        let manadded = Sprintservice.insertsprint(sprint).then((result)=>{
+        let manadded = Sprintservice.updateSprint(sprint,sprint3[0].id).then((result)=>{
             console.log(result.data);
             if(result.data!==undefined)
-            setshow('sprint has been added')
+            setshow('sprint has been updated')
             var changee = props.change;
            }).catch((Error)=>{
             console.log(Error)
@@ -36,9 +44,6 @@ const Add = (props)=>{
     }
 
     const nav = () =>{
-        let action1=  managerlogin(managerid); 
-            console.log(action1);
-            dispatch(action1);
         navigate('/sprint');
     };
 
@@ -63,16 +68,16 @@ const Add = (props)=>{
                     <div className="col-10" id='Sprint_space'>
                     <div class="wrapper">
                 <h1>Hello Again!</h1>
-                <p>Enter all your details</p>
+                <p>Update all your details</p>
                     <form>
-                    <input type="text" placeholder="domain" onChange={e=>setdom(e.target.value)}></input>
-                    <input type="text" placeholder="deadline" onChange={e=>setdead(e.target.value)}></input>
-                    <input type="text" placeholder="priority" onChange={e=>setprio(e.target.value)}></input>
-                    <input type="text" placeholder="no_of_employees" onChange={e=>setemp(e.target.value)}></input>
+                    <input type="text"  value={domain} onChange={e=>setdom(e.target.value)}></input>
+                    <input type="text"  value={deadline} onChange={e=>setdead(e.target.value)}></input>
+                    <input type="text"  value={priority} onChange={e=>setprio(e.target.value)}></input>
+                    <input type="text"  value={no_of_employees} onChange={e=>setemp(e.target.value)}></input>
                     </form>
                     
                     
-                <button onClick={Handlesprint}>Add Sprint</button>
+                <button onClick={Handlesprint}>update Sprint</button>
                 {show}
             </div>
                     </div>
@@ -82,4 +87,4 @@ const Add = (props)=>{
     )
 }
 
-export default Add;
+export default Update;

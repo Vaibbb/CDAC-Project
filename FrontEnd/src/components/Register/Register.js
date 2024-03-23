@@ -9,15 +9,17 @@ import Service from '../../services/ManagerService'
 
 const Form = ()=>{
 
-    const[position,setpos]= useState('');
-    const[name,setname]= useState('');
+    const[Position,setpos]= useState('');
+    const[firstName,setname]= useState('');
     const[salary,setsal]= useState('');
     const[email,setemail]= useState('');
     const[password,setpass]= useState('');
     const[show,setshow] = useState('');
+    const[lastName, setlast] = useState('');
+    const[joinDate,setjoindate] = useState('');
 
     const HandleRegister = ()=>{
-        let man = new Manager(position,email,name,'2024-02-14','',password,salary);
+        let man = new Manager(email,password,firstName,lastName,Position,joinDate,salary);
         console.log(man);
         let manadded = Service.insertManager(man).then((result)=>{
             console.log(result.data);
@@ -36,11 +38,13 @@ const Form = ()=>{
                 <h1>Hello Again!</h1>
                 <p>Enter all your details</p>
                     <form>
-                    <input type="text" placeholder="Position (ASSOCIATE, JUNIOR , SENIOR , DIRECTOR)" onChange={e=>setpos(e.target.value)}></input>
+                    <input type="text" placeholder="Email" onChange={e=>setemail(e.target.value)}></input>
                     <input type="text" placeholder="First name" onChange={e=>setname(e.target.value)}></input>
-                    <input type="text" placeholder="Salary" onChange={e=>setsal(e.target.value)}></input>
-                    <input type="text" placeholder="Email"onChange={e=>setemail(e.target.value)}></input>
+                    <input type="text" placeholder="Last name" onChange={e=>setlast(e.target.value)}></input>
                     <input type="password" placeholder="Enter a Password" onChange={e=>setpass(e.target.value)}></input>
+                    <input type="text" placeholder="Position" onChange={e=>setpos(e.target.value)}></input>
+                    <input type="text" placeholder="JoinDate"onChange={e=>setjoindate(e.target.value)}></input>
+                    <input type="text" placeholder="Salary"onChange={e=>setsal(e.target.value)}></input>
                     </form>
                     
                     

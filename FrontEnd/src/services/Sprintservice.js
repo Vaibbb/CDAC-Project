@@ -11,13 +11,13 @@ class Sprintservice{
     }
     getAllsprints(manid){
         console.log(manid);
-       return axios.get(baseUrl + "/Sprint" + "/man/" + manid);
+       return axios.get(baseUrl + "/sprint" + "/manager/" + manid);
     }
 
 
     insertsprint(sprint){
-        console.log("in service add" + sprint)
-       return axios.post(baseUrl +'/Sprint', sprint, {
+        console.log("in service add" + JSON.stringify(sprint))
+       return axios.post(baseUrl +'/sprint', sprint, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -26,13 +26,18 @@ class Sprintservice{
     }
 
     deletesprint(pid){
-        return axios.delete(baseUrl+"/Sprint/"+pid)
+        return axios.delete(baseUrl+"/sprint/"+pid)
      }
 
-     updatesprint(sprint){
-       console.log(sprint)
-       return axios.put(baseUrl+"/Sprint" , sprint )//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+    updateSprint(sprint, id) {
+        console.log(sprint);
+        return axios.put(baseUrl + "/sprint/" + id, sprint, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
     }
+    
 
 }
 

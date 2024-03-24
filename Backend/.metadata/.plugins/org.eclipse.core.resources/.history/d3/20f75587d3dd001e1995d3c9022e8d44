@@ -1,0 +1,68 @@
+package com.app.controllers;
+
+
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.entities.Manager;
+import com.app.service.Manager_service_imp;
+
+
+
+@RestController
+@RequestMapping("/manager")
+@CrossOrigin(origins = "http://localhost:3000")
+public class ManagerController {
+	
+	@Autowired
+	private Manager_service_imp service;
+	
+	/*@GetMapping("/email/{email}")
+	public Optional<Manager> getManByDept(@PathVariable String email) {
+		System.out.println("in get man by email " + email);
+		Optional<Manager> man =service.findByEmail(email);
+		System.out.println(man);
+		return man;
+	} */
+	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<?> getManByDept(@PathVariable String email) {
+		System.out.println("in get man by email " + email);
+		return ResponseEntity
+				.ok(service.findByEmail(email));
+	}
+
+/*	// get department details
+	// http://host:port/departments/{deptId}
+	@GetMapping("/{deptId}")
+	public ResponseEntity<?> getDepartmentDetails(@PathVariable Long deptId) {
+		System.out.println("in get dept " + deptId);
+		return ResponseEntity
+				.ok(departmentService.getDepartmentDetails(deptId));
+
+	}  */
+	
+	
+	@PostMapping
+	public Manager addManDetails(@RequestBody Manager man) {
+		System.out.println("in add emp " + man);// id : null , rest all fields : present
+		return service.addman(man);
+	}
+	
+
+	
+}

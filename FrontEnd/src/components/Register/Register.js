@@ -16,10 +16,10 @@ const Form = ()=>{
     const[password,setpass]= useState('');
     const[show,setshow] = useState('');
     const[lastName, setlast] = useState('');
-    const[joinDate,setjoindate] = useState('');
+    const[join_date,setjoindate] = useState('');
 
     const HandleRegister = ()=>{
-        let man = new Manager(email,password,firstName,lastName,Position,joinDate,salary);
+        let man = new Manager(email,password,firstName,lastName,Position,join_date,salary);
         console.log(man);
         let manadded = Service.insertManager(man).then((result)=>{
             console.log(result.data);

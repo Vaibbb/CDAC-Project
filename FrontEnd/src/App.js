@@ -9,7 +9,8 @@ import Welcome from './components/Sprint/welcome/Welcome'
 import SprintView from './components/Sprint/Sprint_View/SprintView';
 import EntryDetails from './components/Sprint/Sprint_View/Entry_Details/EntryDetails';
 import Add from './components/Sprint/welcome/Add_a_sprint/Add'
-import Update from './components/Sprint/welcome/Update/Update'
+import Update from './components/Sprint/Update/Update'
+
 function App() {
   return (
     <BrowserRouter>

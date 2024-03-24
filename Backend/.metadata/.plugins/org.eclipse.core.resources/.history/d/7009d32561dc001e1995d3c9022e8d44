@@ -1,0 +1,12 @@
+package com.app.service;
+
+import java.util.Optional;
+
+import com.app.dto.ManagerDTO;
+import com.app.entities.Manager;
+
+public interface Manager_service {
+
+	public ManagerDTO findByEmail(Long email);
+	
+}

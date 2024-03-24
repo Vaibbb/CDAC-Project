@@ -1,0 +1,42 @@
+package com.app.service;
+
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+
+import com.app.dao.ManagerDao;
+import com.app.dto.ManagerDTO;
+import com.app.entities.Manager;
+
+@Service
+@Transactional
+public class Manager_service_imp implements Manager_service {
+
+	@Autowired
+	private ManagerDao mandao;
+	
+	@Autowired
+	private ModelMapper mapper;
+
+	public Manager addman(Manager man) {
+		// TODO Auto-generated method stub
+		return mandao.save(man);
+	}
+
+	@Override
+	public ManagerDTO findByEmail(Integer deptId) {
+		// TODO Auto-generated method stub
+		ManagerDTO man= mapper.map(
+			    mandao.findById(deptId)
+			        ,
+			    ManagerDTO.class);
+
+		System.out.println("working or not " +man);
+		return man;
+	}
+
+}

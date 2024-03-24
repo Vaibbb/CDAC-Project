@@ -1,0 +1,57 @@
+package com.app.controllers;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.app.entities.Manager;
+import com.app.service.Manager_service_imp;
+
+@RestController
+@RequestMapping("/manager")
+@CrossOrigin(origins = "http://localhost:3000")
+public class ManagerController {
+	
+	@Autowired
+	private Manager_service_imp service;
+	
+	/*@GetMapping("/email/{email}")
+	public Optional<Manager> getManByDept(@PathVariable String email) {
+		System.out.println("in get man by email " + email);
+		Optional<Manager> man =service.findByEmail(email);
+		System.out.println(man);
+		return man;
+	} */
+	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<?> getManByDept(@PathVariable String email) {
+		System.out.println("in get man by email " + email);
+		return ResponseEntity
+				.ok(service.findByEmail(email));
+	}
+
+/*	// get department details
+	// http://host:port/departments/{deptId}
+	@GetMapping("/{deptId}")
+	public ResponseEntity<?> getDepartmentDetails(@PathVariable Long deptId) {
+		System.out.println("in get dept " + deptId);
+		return ResponseEntity
+				.ok(departmentService.getDepartmentDetails(deptId));
+
+	}  */
+	
+	
+	@PostMapping
+	public Manager addManDetails(@RequestBody Manager man) {
+		System.out.println("in add emp " + man);// id : null , rest all fields : present
+		return service.addman(man);
+	}
+	
+
+	
+}
